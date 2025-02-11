@@ -1,0 +1,17 @@
+student$ go run . 
+
+student$ go run . ""
+
+student$ go run . "hello" standard | cat -e
+
+student$ go run . "Hello There!" shadow | cat -e
+
+student$ go run . "Hello There!" thinkertoy | cat -e
+
+student$ go run . "hello" shadow | cat -e
+
+student$ go run . "" xxxx | cat -e
+
+student$ go run . "Hello There!" thinkertoy | cat -e
+
+student$ go run . "!" shadow | cat -e

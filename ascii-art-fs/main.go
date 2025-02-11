@@ -14,19 +14,20 @@ var (
 	lines = [8]string{}
 )
 
-func InitMap(str string) {
+func InitMap(banner string) {
 	var file *os.File
 	var err error
 
-	switch str {
-	case "standard":
+	switch banner {
+		
+	case "standard", "standard.txt":
 		file, err = os.Open("Banners/standard.txt")
-	case "shadow":
+	case "shadow", "shadow.txt":
 		file, err = os.Open("Banners/shadow.txt")
-	case "thinkertoy":
+	case "thinkertoy", "thinkertoy.txt":
 		file, err = os.Open("Banners/thinkertoy.txt")
 	default:
-		os.Stderr.WriteString("Err: Invalid [BANNER]: " + str + "\n")
+		os.Stderr.WriteString("Err: Invalid Argument [BANNER]: " + banner + "\n")
 		os.Exit(0)
 	}
 
@@ -37,7 +38,8 @@ func InitMap(str string) {
 
 	scanner := bufio.NewScanner(file)
 	// to skip first empty line
-	if str == "shadow" || str == "thinkertoy" {
+	if banner == "shadow" || banner == "thinkertoy" ||
+		banner == "shadow.txt" || banner == "thinkertoy.txt" {
 		scanner.Scan()
 	}
 	// insert data on the map
@@ -86,13 +88,16 @@ func Printing(inp string) {
 func main() {
 	args := os.Args[1:]
 
+	if len(args) == 1 {
+		args = append(args, "standard")
+	}
 	if len(args) != 2 {
-		os.Stderr.WriteString("Err: Invalid Format | Usage: [STRING] [BANNER] !")
+		os.Stderr.WriteString("Usage: go run . [STRING] [BANNER] \n\nEX: go run . something standard")
 		return
 	}
 
 	if !A.IsValidArg(args[0]) {
-		os.Stderr.WriteString("Err: Invalid Arguments !")
+		os.Stderr.WriteString("Err: Invalid Arguments !\n")
 		return
 	}
 

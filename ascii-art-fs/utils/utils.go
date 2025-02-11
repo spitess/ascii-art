@@ -1,6 +1,9 @@
 package asciiArt
 
-import "bufio"
+import (
+	"bufio"
+	"os"
+)
 
 func InsertValue(scanner *bufio.Scanner) [8]string {
 	ArtValue := [8]string{}
@@ -14,6 +17,7 @@ func InsertValue(scanner *bufio.Scanner) [8]string {
 
 func IsValidArg(arg string) bool {
 	if arg == "" {
+		os.Exit(0)
 		return false
 	}
 	for _, val := range arg {

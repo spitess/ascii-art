@@ -1,0 +1,6 @@
+inp----> a king kitten have kit
+color----> red
+substring----> kit
+beforeSubstring----- a king 
+afterSubstring----- ten have kit
+a king [31mkit[0mten have kit
